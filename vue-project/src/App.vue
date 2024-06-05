@@ -1,47 +1,40 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+const nome = 'Rodrigo Cinelli'
+const meuObj = {
+  nome: 'Rodrigo Cinelli',
+  filmeFavorito: 'Matrix'
+}
+
+function dizOla(nome) {
+  return `${nome} diz oi!`;
+}
+
+const imagemDoGoogle = 'https://www.google.com.br/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png';
+const imagemDoBing = 'https://netexperts.com.br/wp-content/uploads/2023/12/bing-p-optimized.webp';
+
+const botaoEstaDesabilitado = false;
+
+const gostaDaGoogle = false;
+const gostaDoBing = false;
+
+const estaAutorizado = false;
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <h1>{{ dizOla('paula') }}</h1>
+  <img v-if="gostaDaGoogle":src="imagemDoGoogle" alt="">
+  <img v-else-if="gostaDoBing":src="imagemDoBing" alt="">
+  <h2 v-else>Não curte o Google e o Bing </h2>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+  <h1 v-if="estaAutorizado">Bem-vindo</h1>
+  <h1 v-else>Não possui acesso</h1>
 
-  <main>
-    <TheWelcome />
-  </main>
+  <button :disabled="botaoEstaDesabilitado">enviar mensagem</button>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+img {
+  max-width: 200px;
 }
 </style>
